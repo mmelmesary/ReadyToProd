@@ -5,7 +5,7 @@ metadata:
     app: petclinic
     app.kubernetes.io/instance: petclinic
     app.kubernetes.io/name: petclinic
-    app.kubernetes.io/managed-by: terrafrom&argocd
+    app.kubernetes.io/managed-by: terrafrom
   name: petclinic-deployment
   namespace: petclinic
 spec:
