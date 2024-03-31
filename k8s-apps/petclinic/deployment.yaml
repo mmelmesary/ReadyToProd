@@ -14,7 +14,7 @@ spec:
     matchLabels:
       app.kubernetes.io/instance: petclinic
       app.kubernetes.io/name: petclinic
-      app.kubernetes.io/managed-by: terrafrom&argocd
+      app.kubernetes.io/managed-by: terrafrom
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -26,7 +26,7 @@ spec:
         app: petclinic
         app.kubernetes.io/instance: petclinic
         app.kubernetes.io/name: petclinic
-        app.kubernetes.io/managed-by: terrafrom&argocd
+        app.kubernetes.io/managed-by: terrafrom
     spec:
       containers:
       - env:
