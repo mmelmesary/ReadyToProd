@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: petclinic
+    app.kubernetes.io/instance: petclinic
+    app.kubernetes.io/name: petclinic
+    app.kubernetes.io/managed-by: terrafrom&argocd
+  name: petclinic-deployment
+  namespace: petclinic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: petclinic
+      app.kubernetes.io/name: petclinic
+      app.kubernetes.io/managed-by: terrafrom&argocd
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: petclinic
+        app.kubernetes.io/instance: petclinic
+        app.kubernetes.io/name: petclinic
+        app.kubernetes.io/managed-by: terrafrom&argocd
+    spec:
+      containers:
+      - env:
+        - name: SERVER_PORT
+          value: "8080"
+        - name: SPRING_PROFILES_ACTIVE
+          value: "postgres"
+        envFrom:
+          - secretRef:
+              name: petclinic-db-secret
+        image: otasys/spring-petclinic:3.2.0-SNAPSHOT
+        imagePullPolicy: IfNotPresent
+        name: petclinic
+        ports:
+        - containerPort: 8080
+          name: petclinic
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

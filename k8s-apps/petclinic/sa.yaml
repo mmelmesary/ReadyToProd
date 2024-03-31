@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: petclinic-app-external-secrets-irsa
+  Annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::532323453523:role/tf-devops-eks-petclinic-app-external-secrets-irsa
+automountServiceAccountToken: true
