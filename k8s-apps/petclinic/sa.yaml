@@ -3,7 +3,7 @@ kind: ServiceAccount
 metadata:
   name: tf-devops-eks-petclinic-app-external-secrets-sa
   namespace:  petclinic
-  Annotations:
+  annotations:
     eks.amazonaws.com/role-arn: "arn:aws:iam::532323453523:role/tf-devops-eks-petclinic-app-external-secrets-irsa"
   labels:
     app.kubernetes.io/instance: tf-devops-eks-petclinic-app-external-secrets-sa
