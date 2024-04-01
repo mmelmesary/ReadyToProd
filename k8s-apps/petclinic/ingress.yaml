@@ -11,16 +11,16 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "petclinic.elmesary.net"
+  - host: "aa60d78897e0a4a3fa2736484c55a526-3012038f3bfec9bb.elb.us-east-1.amazonaws.com"
     http:
       paths:
       - pathType: Prefix
-        path: /
+        path: /petclinic
         backend:
           service:
             name: petclinic-svc
             port:
-              number: 443 
+              number: 8080 
   tls:
     - hosts:
       - petclinic.elmesary.net
